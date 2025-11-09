@@ -11,10 +11,11 @@ export const Signup = () => {
     const [password, setpassword] = useState('');
     const navigate = useNavigate();
 
+    const API_url = import.meta.env.VITE_URL
 
     async function signup() {
-        const response = await fetch(`http://localhost:3000/api/v1/user/signup`, {
-            method: 'POST',
+        const response = await fetch(`${API_url}/user/signup`, {
+            method: 'POST',          
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -26,6 +27,7 @@ export const Signup = () => {
             })
         })
         const data = await response.json();
+        console.log(data)
         localStorage.setItem('jwttoken', data.token)
         navigate("/dashboard")
 
