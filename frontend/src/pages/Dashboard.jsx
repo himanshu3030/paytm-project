@@ -10,10 +10,11 @@ export const Dashboard = () => {
     const[search, setsearch] = useState();
     const[data, setdata] = useState([]);
     const navigate = useNavigate();
-    
+
+    const API_url = import.meta.env.VITE_URL
 
    async function filter(){
-        const response = await fetch(`http://localhost:3000/api/v1/user/bulk?filter=${search}`,{
+        const response = await fetch(`${API_url}/bulk?filter=${search}`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

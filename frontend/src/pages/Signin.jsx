@@ -7,8 +7,11 @@ export const Signin = () => {
     const [password, setpassword] = useState('');
     const navigate = useNavigate();
 
+    const API_url = import.meta.env.VITE_URL
+    // console.log()
+
     async function signin() {
-        const response = await fetch(`http://localhost:3000/api/v1/user/signin`, {
+        const response = await fetch(`${API_url}/user/signin`, {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',

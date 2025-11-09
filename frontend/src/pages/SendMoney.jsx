@@ -11,9 +11,11 @@ export const SendMoney = () => {
 
  console.log("this the name : " , name)
 
+ const API_url = import.meta.env.VITE_URL
+
 async function transfer(){
     
-    const response = await fetch("http://localhost:3000/api/v1/account/transfer",{
+    const response = await fetch(`${API_url}/account/transfer`,{
         method: 'POST',          
         headers: {
             'Content-Type': 'application/json',

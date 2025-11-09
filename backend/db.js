@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
+import 'dotenv/config'
 
-mongoose.connect("mongodb+srv://admin:dvOqFEebL4RUuM94@cluster0.xaslane.mongodb.net/paytm")
+
+mongoose.connect(process.env.MONGODB_URI)
 
 const Schema = mongoose.Schema
 const userSchema = new Schema({
