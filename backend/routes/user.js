@@ -4,6 +4,7 @@ import { User, Account } from '../db.js'
 import zod, { string } from 'zod'
 import JWT_SECRET from '../config.js';
 import authmiddleware from '../middleware/index.js'
+// import mongoose from 'mongoose';
 
 
 const router = express.Router();
@@ -147,7 +148,7 @@ router.get('/bulk/', async (req, res) => {
             username: { "$regex": filter }
         }]
     })
-    console.log(bulkuser)
+    console.log("search user : ", bulkuser)
     res.json({
         user: bulkuser.map(u => ({
             _id: u._id,
