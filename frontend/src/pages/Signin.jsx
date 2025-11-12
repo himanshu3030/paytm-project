@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Button } from '../components/Button'
+import { Input } from '../components/Input'
 
 export const Signin = () => {
     const [username, setusername] = useState('');
@@ -28,8 +30,9 @@ export const Signin = () => {
         // console.log(localStorage.getItem('jwttoken'))
 
         if(data.token){
-            navigate('/dashboard?id='+ data._id + '&name=' + data.firstname)
-            // navigate('/dashboard')
+            // navigate('/dashboard?id='+ data._id + '&name=' + data.firstname)
+
+            navigate('/dashboard')
         }
     }
 
@@ -48,21 +51,26 @@ export const Signin = () => {
                     {/* Inputs Fields */}
                     <div>
 
-                        <div className='flex flex-col gap-2'>
-                            <div className='font-semibold'>Email</div>
-                            <input onChange={(e) => { setusername(e.target.value) }} className='w-full p-2 border-2 rounded-md border-gray-300' type="text" placeholder="Om" />
-                        </div>
+                        <Input
+                    onChange={(e)=>{
+                        setusername(e.target.value)
+                    }} 
+                    placeholder={"abc@gmail.com"} 
+                    lable={"Email"}/>
 
-                        <div className='flex flex-col gap-2'>
-                            <div className='font-semibold'>Password</div>
-                            <input onChange={(e) => { setpassword(e.target.value) }} className='w-full p-2 border-2 rounded-md border-gray-300' type="text" placeholder="password" />
-                        </div>
+                        <Input
+                    onChange={(e)=>{
+                        setpassword(e.target.value)
+                    }} 
+                    placeholder={"@Abc1234"} 
+                    lable={"Password"}/>
 
                     </div>
 
                     {/* Action button and links */}
                     <div className='flex flex-col gap-2'>
-                        <button onClick={()=>{signin()}} className="w-full bg-black font-Semibold text-white p-2 rounded-md hover:cursor-pointer">Sign In</button>
+                        {/* <button onClick={()=>{signin()}} className="w-full bg-black font-Semibold text-white p-2 rounded-md hover:cursor-pointer">Sign In</button> */}
+                        <Button onClick={()=>{signin()}} lable={"Sign In"}/>
                         <div className='flex justify-center'>
                             <p>Don't have an account?</p>
                             <Link className='font-mono text-decoration: underline ' to='/signup'>Sign Up</Link>
